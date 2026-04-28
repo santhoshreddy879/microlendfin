@@ -1,0 +1,36 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+
+# Environment files
+.env*
+!.env.example
+
+# Database files (NEVER commit these)
+*.db
+*.sqlite
+*.db-journal
+database.sqlite
+
+# IDE and OS files
+.vscode/
+.idea/
+Thumbs.db
+
+# Temporary files
+tmp/
+
+# Logs folder
+logs/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite cache
+.vite/
+
+# Optional docs ignore
+docs/test-network.md

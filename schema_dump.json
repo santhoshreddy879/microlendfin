@@ -1,0 +1,533 @@
+{
+  "tables": {
+    "customers": {
+      "sql": "CREATE TABLE customers (\n      id TEXT PRIMARY KEY,\n      name TEXT NOT NULL,\n      phone TEXT,\n      address TEXT,\n      idProof TEXT,\n      createdAt TEXT NOT NULL\n    , createdBy TEXT)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "phone",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "address",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "idProof",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "createdAt",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "createdBy",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "loans": {
+      "sql": "CREATE TABLE loans (\n      id TEXT PRIMARY KEY,\n      customerId TEXT NOT NULL,\n      loanAmount REAL NOT NULL,\n      profit REAL NOT NULL,\n      disbursedAmount REAL NOT NULL,\n      tenureDays INTEGER NOT NULL,\n      emiPerDay REAL NOT NULL,\n      startDate TEXT NOT NULL,\n      endDate TEXT NOT NULL,\n      status TEXT NOT NULL, createdBy TEXT, createdAt TEXT,\n      FOREIGN KEY (customerId) REFERENCES customers(id)\n    )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "customerId",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "loanAmount",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "profit",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "disbursedAmount",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "tenureDays",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "emiPerDay",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "startDate",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "endDate",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "createdBy",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "createdAt",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "payments": {
+      "sql": "CREATE TABLE payments (\n      id TEXT PRIMARY KEY,\n      loanId TEXT NOT NULL,\n      date TEXT NOT NULL,\n      amountPaid REAL NOT NULL,\n      FOREIGN KEY (loanId) REFERENCES loans(id)\n    )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "loanId",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "date",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "amountPaid",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "expenses": {
+      "sql": "CREATE TABLE expenses (\n      id TEXT PRIMARY KEY,\n      amount REAL NOT NULL,\n      category TEXT NOT NULL,\n      date TEXT NOT NULL,\n      notes TEXT\n    )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "amount",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "category",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "date",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "notes",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "ledger": {
+      "sql": "CREATE TABLE ledger (\n      id TEXT PRIMARY KEY,\n      type TEXT NOT NULL,\n      amount REAL NOT NULL,\n      category TEXT NOT NULL,\n      date TEXT NOT NULL,\n      referenceId TEXT,\n      notes TEXT\n    )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "amount",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "category",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "date",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "referenceId",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "notes",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "users": {
+      "sql": "CREATE TABLE users (\n      id TEXT PRIMARY KEY,\n      name TEXT NOT NULL,\n      email TEXT UNIQUE NOT NULL,\n      password TEXT NOT NULL,\n      role TEXT NOT NULL\n    , securityQuestion TEXT, securityAnswer TEXT, phone TEXT, status TEXT DEFAULT 'pending', currentIp TEXT, lastLoginAt TEXT, sessionId TEXT)",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "email",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "password",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "role",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "securityQuestion",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "securityAnswer",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "phone",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": "'pending'",
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "currentIp",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "lastLoginAt",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "sessionId",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ]
+    },
+    "audit_logs": {
+      "sql": "CREATE TABLE audit_logs (\n      id TEXT PRIMARY KEY,\n      userId TEXT,\n      userName TEXT,\n      action TEXT NOT NULL,\n      details TEXT,\n      entityType TEXT,\n      entityId TEXT,\n      createdAt DATETIME DEFAULT CURRENT_TIMESTAMP\n    )",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "userId",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "userName",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "action",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "details",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "entityType",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "entityId",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "createdAt",
+          "type": "DATETIME",
+          "notnull": 0,
+          "dflt_value": "CURRENT_TIMESTAMP",
+          "pk": 0
+        }
+      ]
+    }
+  },
+  "indexes": [
+    {
+      "name": "sqlite_autoindex_customers_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_loans_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_payments_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_expenses_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_ledger_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_users_1",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_users_2",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_audit_logs_1",
+      "sql": null
+    },
+    {
+      "name": "idx_loans_customerId",
+      "sql": "CREATE INDEX idx_loans_customerId ON loans(customerId)"
+    },
+    {
+      "name": "idx_payments_loanId",
+      "sql": "CREATE INDEX idx_payments_loanId ON payments(loanId)"
+    },
+    {
+      "name": "idx_ledger_referenceId",
+      "sql": "CREATE INDEX idx_ledger_referenceId ON ledger(referenceId)"
+    },
+    {
+      "name": "idx_ledger_date",
+      "sql": "CREATE INDEX idx_ledger_date ON ledger(date)"
+    },
+    {
+      "name": "idx_audit_logs_createdAt",
+      "sql": "CREATE INDEX idx_audit_logs_createdAt ON audit_logs(createdAt)"
+    }
+  ]
+}
